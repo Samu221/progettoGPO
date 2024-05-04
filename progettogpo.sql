@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2024 alle 12:11
+-- Creato il: Mag 04, 2024 alle 12:28
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.0.28
 
@@ -65,6 +65,25 @@ INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `salvati`
+--
+
+CREATE TABLE `salvati` (
+  `email` varchar(50) NOT NULL,
+  `ID_bottega` int(30) NOT NULL,
+  `ID_save` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `salvati`
+--
+
+INSERT INTO `salvati` (`email`, `ID_bottega`, `ID_save`) VALUES
+('ergwagar@email.coc', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `tag`
 --
 
@@ -99,6 +118,14 @@ ALTER TABLE `bottega`
   ADD KEY `email` (`email`);
 
 --
+-- Indici per le tabelle `salvati`
+--
+ALTER TABLE `salvati`
+  ADD PRIMARY KEY (`ID_save`),
+  ADD KEY `ID_bottega` (`ID_bottega`),
+  ADD KEY `email` (`email`);
+
+--
 -- Indici per le tabelle `tag`
 --
 ALTER TABLE `tag`
@@ -116,6 +143,12 @@ ALTER TABLE `bottega`
   MODIFY `ID_bottega` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT per la tabella `salvati`
+--
+ALTER TABLE `salvati`
+  MODIFY `ID_save` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT per la tabella `tag`
 --
 ALTER TABLE `tag`
@@ -130,6 +163,13 @@ ALTER TABLE `tag`
 --
 ALTER TABLE `bottega`
   ADD CONSTRAINT `bottega_ibfk_1` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
+
+--
+-- Limiti per la tabella `salvati`
+--
+ALTER TABLE `salvati`
+  ADD CONSTRAINT `salvati_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`),
+  ADD CONSTRAINT `salvati_ibfk_2` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
 
 --
 -- Limiti per la tabella `tag`
