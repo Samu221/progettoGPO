@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2024 alle 12:28
+-- Creato il: Mag 04, 2024 alle 12:47
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.0.28
 
@@ -65,6 +65,18 @@ INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `immagine`
+--
+
+CREATE TABLE `immagine` (
+  `ID_image` int(30) NOT NULL,
+  `image` longblob NOT NULL,
+  `ID_bottega` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `salvati`
 --
 
@@ -118,6 +130,13 @@ ALTER TABLE `bottega`
   ADD KEY `email` (`email`);
 
 --
+-- Indici per le tabelle `immagine`
+--
+ALTER TABLE `immagine`
+  ADD PRIMARY KEY (`ID_image`),
+  ADD KEY `ID_bottega` (`ID_bottega`);
+
+--
 -- Indici per le tabelle `salvati`
 --
 ALTER TABLE `salvati`
@@ -143,6 +162,12 @@ ALTER TABLE `bottega`
   MODIFY `ID_bottega` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT per la tabella `immagine`
+--
+ALTER TABLE `immagine`
+  MODIFY `ID_image` int(30) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `salvati`
 --
 ALTER TABLE `salvati`
@@ -163,6 +188,12 @@ ALTER TABLE `tag`
 --
 ALTER TABLE `bottega`
   ADD CONSTRAINT `bottega_ibfk_1` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
+
+--
+-- Limiti per la tabella `immagine`
+--
+ALTER TABLE `immagine`
+  ADD CONSTRAINT `immagine_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`);
 
 --
 -- Limiti per la tabella `salvati`
