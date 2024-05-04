@@ -1,11 +1,11 @@
 <?php
     $servername = 'localhost';
-    $username = 'root';
+    $name = 'root';
     $password = '';
-    $nomeDB = 'progettoinfo';
+    $nomeDB = 'progettogpo';
 
     // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $nomeDB);
+    $conn = mysqli_connect($servername, $name, $password, $nomeDB);
 
     // Check connection
     if (!$conn) {
@@ -14,17 +14,17 @@
 
     session_start();
 
-    $name = $_POST['userlogin'];
+    $email = $_POST['maillogin'];
     $pw = $_POST['passlogin'];
 
     // Using prepared statements to prevent SQL injection
     $query = "	SELECT username, password 
 				FROM account 
-				WHERE username=?";
+				WHERE email=?";
 
     if ($stmt = mysqli_prepare($conn, $query)) {
         // Bind parameters and execute the statement
-        mysqli_stmt_bind_param($stmt, "s", $name);
+        mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_store_result($stmt);
 
@@ -39,12 +39,12 @@
                 header("location: home.php");
                 exit(); // Ensure script stops here after redirect
             } else {
-                echo "Utente e/o password errati";
-                echo "password inserita: ".$pw;
-                echo "password db: ".SHA1($hashed_password);
+                $_SESSION['login_error'] = 'Email e/o password sono sbagliati.';
+                header('Location: index.php');
             }
         } else {
-            echo "Utente e/o password errati";
+            $_SESSION['login_error'] = 'Email e/o password sono sbagliati.';
+            header('Location: index.php');
         }
 
         mysqli_stmt_close($stmt);
