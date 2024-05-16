@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2024 alle 12:47
+-- Creato il: Mag 16, 2024 alle 15:30
 -- Versione del server: 10.4.28-MariaDB
--- Versione PHP: 8.0.28
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`username`, `email`, `password`, `immagine`, `artigiano`) VALUES
-('pucciartigiano', 'ergwagar@email.coc', '123stella', '', 1);
+('pucciartigiano', 'ergwagar@email.coc', '123stella', '', 1),
+('samu', 'samuele@mail.com', 'd9f1ce0aaae4a62a86fe0defd96479bae188ddde', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -52,15 +53,19 @@ CREATE TABLE `bottega` (
   `ID_bottega` int(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `orario` varchar(50) NOT NULL,
-  `nome` varchar(50) NOT NULL
+  `nome` varchar(50) NOT NULL,
+  `indirizzo` varchar(50) NOT NULL,
+  `città` varchar(60) NOT NULL,
+  `descrizione` varchar(2000) NOT NULL,
+  `num_like` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `bottega`
 --
 
-INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`) VALUES
-(1, 'ergwagar@email.coc', '19-20', 'legno e botte');
+INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`, `indirizzo`, `città`, `descrizione`, `num_like`) VALUES
+(1, 'ergwagar@email.coc', '19-20', 'legno e botte', 'via roma 2', 'Milano', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lorem lacus, condimentum vitae hendrerit nec, dignissim quis libero. Sed consectetur scelerisque interdum. Nullam elementum vitae dolor in pretium. Sed quis nibh velit. Sed sit amet placerat orci, ut ultrices nulla. Cras varius fringilla velit, eget dictum velit aliquet pharetra. Nullam vel faucibus dui. Nam interdum dolor eget convallis consequat. Aliquam euismod vitae odio non vulputate. Proin quam lacus, mattis non tincidunt dictum, sollicitudin ut nisi. Nam neque ipsum, congue in tellus ac, efficitur fermentum est.  Sed finibus odio velit, nec ullamcorper turpis semper vel. Nam ut massa vehicula, commodo ipsum non, posuere ipsum. Suspendisse et magna sit amet dolor laoreet tempus vel id elit. Vestibulum in arcu vel urna mollis sagittis et id dolor. Suspendisse eu ex bibendum, laoreet ante ac, fringilla massa. Fusce eu mattis urna, id molestie nisi. Aliquam consectetur turpis in euismod luctus. Donec quis sodales ante, in venenatis mauris. Sed rhoncus ex lacus, non vehicula libero lobortis a. Sed et libero pretium, tincidunt nulla sit amet, consequat mi. Phasellus efficitur augue ullamcorper, ullamcorper ex in, vulputate purus.  Etiam varius libero risus, non sagittis ex eleifend nec. Aliquam nisl leo, molestie vitae consequat et, maximus id elit. Duis cursus tellus sit amet vestibulum aliquet. Praesent nulla lorem, rhoncus non elit et, finibus consequat lacus. Fusce et lorem tellus. Duis porttitor nisi in finibus luctus. Maecenas dapibus nisl quis felis scelerisque, et viverra eros ornare. Integer id gravida tellus.  Nunc eu scelerisque nibh. Duis interdum hendrerit posuere. Donec accumsan pharetra lorem, nec iaculis dolor tincidunt quis. Morbi varius arcu non odio egestas, ac scelerisque odio maximus. Etiam', 100);
 
 -- --------------------------------------------------------
 
