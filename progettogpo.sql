@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 16, 2024 alle 15:30
+-- Creato il: Mag 16, 2024 alle 18:23
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`username`, `email`, `password`, `immagine`, `artigiano`) VALUES
 ('pucciartigiano', 'ergwagar@email.coc', '123stella', '', 1),
-('samu', 'samuele@mail.com', 'd9f1ce0aaae4a62a86fe0defd96479bae188ddde', NULL, 0);
+('samu', 'samuele@mail.com', 'd9f1ce0aaae4a62a86fe0defd96479bae188ddde', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,8 @@ CREATE TABLE `bottega` (
 --
 
 INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`, `indirizzo`, `città`, `descrizione`, `num_like`) VALUES
-(1, 'ergwagar@email.coc', '19-20', 'legno e botte', 'via roma 2', 'Milano', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lorem lacus, condimentum vitae hendrerit nec, dignissim quis libero. Sed consectetur scelerisque interdum. Nullam elementum vitae dolor in pretium. Sed quis nibh velit. Sed sit amet placerat orci, ut ultrices nulla. Cras varius fringilla velit, eget dictum velit aliquet pharetra. Nullam vel faucibus dui. Nam interdum dolor eget convallis consequat. Aliquam euismod vitae odio non vulputate. Proin quam lacus, mattis non tincidunt dictum, sollicitudin ut nisi. Nam neque ipsum, congue in tellus ac, efficitur fermentum est.  Sed finibus odio velit, nec ullamcorper turpis semper vel. Nam ut massa vehicula, commodo ipsum non, posuere ipsum. Suspendisse et magna sit amet dolor laoreet tempus vel id elit. Vestibulum in arcu vel urna mollis sagittis et id dolor. Suspendisse eu ex bibendum, laoreet ante ac, fringilla massa. Fusce eu mattis urna, id molestie nisi. Aliquam consectetur turpis in euismod luctus. Donec quis sodales ante, in venenatis mauris. Sed rhoncus ex lacus, non vehicula libero lobortis a. Sed et libero pretium, tincidunt nulla sit amet, consequat mi. Phasellus efficitur augue ullamcorper, ullamcorper ex in, vulputate purus.  Etiam varius libero risus, non sagittis ex eleifend nec. Aliquam nisl leo, molestie vitae consequat et, maximus id elit. Duis cursus tellus sit amet vestibulum aliquet. Praesent nulla lorem, rhoncus non elit et, finibus consequat lacus. Fusce et lorem tellus. Duis porttitor nisi in finibus luctus. Maecenas dapibus nisl quis felis scelerisque, et viverra eros ornare. Integer id gravida tellus.  Nunc eu scelerisque nibh. Duis interdum hendrerit posuere. Donec accumsan pharetra lorem, nec iaculis dolor tincidunt quis. Morbi varius arcu non odio egestas, ac scelerisque odio maximus. Etiam', 100);
+(1, 'ergwagar@email.coc', '19-20', 'legno e botte', 'via roma 2', 'Milano', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lorem lacus, condimentum vitae hendrerit nec, dignissim quis libero. Sed consectetur scelerisque interdum. Nullam elementum vitae dolor in pretium. Sed quis nibh velit. Sed sit amet placerat orci, ut ultrices nulla. Cras varius fringilla velit, eget dictum velit aliquet pharetra. Nullam vel faucibus dui. Nam interdum dolor eget convallis consequat. Aliquam euismod vitae odio non vulputate. Proin quam lacus, mattis non tincidunt dictum, sollicitudin ut nisi. Nam neque ipsum, congue in tellus ac, efficitur fermentum est.  Sed finibus odio velit, nec ullamcorper turpis semper vel. Nam ut massa vehicula, commodo ipsum non, posuere ipsum. Suspendisse et magna sit amet dolor laoreet tempus vel id elit. Vestibulum in arcu vel urna mollis sagittis et id dolor. Suspendisse eu ex bibendum, laoreet ante ac, fringilla massa. Fusce eu mattis urna, id molestie nisi. Aliquam consectetur turpis in euismod luctus. Donec quis sodales ante, in venenatis mauris. Sed rhoncus ex lacus, non vehicula libero lobortis a. Sed et libero pretium, tincidunt nulla sit amet, consequat mi. Phasellus efficitur augue ullamcorper, ullamcorper ex in, vulputate purus.  Etiam varius libero risus, non sagittis ex eleifend nec. Aliquam nisl leo, molestie vitae consequat et, maximus id elit. Duis cursus tellus sit amet vestibulum aliquet. Praesent nulla lorem, rhoncus non elit et, finibus consequat lacus. Fusce et lorem tellus. Duis porttitor nisi in finibus luctus. Maecenas dapibus nisl quis felis scelerisque, et viverra eros ornare. Integer id gravida tellus.  Nunc eu scelerisque nibh. Duis interdum hendrerit posuere. Donec accumsan pharetra lorem, nec iaculis dolor tincidunt quis. Morbi varius arcu non odio egestas, ac scelerisque odio maximus. Etiam', 100),
+(2, 'ergwagar@email.coc', '08-12 14-19', 'er pucci', 'via bucci 104', 'la catena', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lorem lacus, condimentum vitae hendrerit nec, dignissim quis libero. Sed consectetur scelerisque interdum. Nullam elementum vitae dolor in pretium. Sed quis nibh velit. Sed sit amet placerat orci, ut ultrices nulla. Cras varius fringilla velit, eget dictum velit aliquet pharetra. Nullam vel faucibus dui. Nam interdum dolor eget convallis consequat. Aliquam euismod vitae odio non vulputate. Proin quam lacus, mattis non tincidunt dictum, sollicitudin ut nisi. Nam neque ipsum, congue in tellus ac, efficitur fermentum est.\r\n\r\nSed finibus odio velit, nec ullamcorper turpis semper vel. Nam ut massa vehicula, commodo ipsum non, posuere ipsum. Suspendisse et magna sit amet dolor laoreet tempus vel id elit. Vestibulum in arcu vel urna mollis sagittis et id dolor. Suspendisse eu ex bibendum, laoreet ante ac, fringilla massa. Fusce eu mattis urna, id molestie nisi. Aliquam consectetur turpis in euismod luctus. Donec quis sodales ante, in venenatis mauris. Sed rhoncus ex lacus, non vehicula libero lobortis a. Sed et libero pretium, tincidunt nulla sit amet, consequat mi. Phasellus efficitur augue ullamcorper, ullamcorper ex in, vulputate purus.\r\n\r\nEtiam varius libero risus, non sagittis ex eleifend nec. Aliquam nisl leo, molestie vitae consequat et, maximus id elit. Duis cursus tellus sit amet vestibulum aliquet. Praesent nulla lorem, rhoncus non elit et, finibus consequat lacus. Fusce et lorem tellus. Duis porttitor nisi in finibus luctus. Maecenas dapibus nisl quis felis scelerisque, et viverra eros ornare. Integer id gravida tellus.\r\n\r\nNunc eu scelerisque nibh. Duis interdum hendrerit posuere. Donec accumsan pharetra lorem, nec iaculis dolor tincidunt quis. Morbi varius arcu non odio egestas, ac scelerisque odio maximus. Etiam nec orci pharetra nunc gravida egestas in nec purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi nec imperdiet sem. Vestibulum ', 65);
 
 -- --------------------------------------------------------
 
@@ -75,9 +76,17 @@ INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`, `indirizzo`, `ci
 
 CREATE TABLE `immagine` (
   `ID_image` int(30) NOT NULL,
-  `image` longblob NOT NULL,
+  `image` varchar(60) NOT NULL,
   `ID_bottega` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `immagine`
+--
+
+INSERT INTO `immagine` (`ID_image`, `image`, `ID_bottega`) VALUES
+(1, 'img2.jpg', 1),
+(2, 'img2.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -164,13 +173,13 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT per la tabella `bottega`
 --
 ALTER TABLE `bottega`
-  MODIFY `ID_bottega` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_bottega` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `immagine`
 --
 ALTER TABLE `immagine`
-  MODIFY `ID_image` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_image` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `salvati`
