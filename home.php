@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="stile_home.css">
+    <link rel="stylesheet" href="stili/stile_home.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -9,24 +9,27 @@
 <body>
     <header>
         <div class="header-content">
-            <a href="home.php" class="link">
-                <img src="immagini/logo.png" alt="Logo" class="logo">
+            <a href="home.php" class="logo-link">
+                <img src="img/logo.jpeg" alt="Logo" class="logo">
             </a>
-            <h1 class="h1"> Workman Advisor </h1>
+            <div class="h1"><h1> Workman Advisor </h1></div>
+            
         </div>
         <a href="account.php" class="account-link">
-            <img src="immagini/account.png" alt="Icona Account" style="width: 40px;">
+            <img src="img/account.png" alt="Icona Account" style="width: 40px;">
         </a>
         <a href="/percorso-del-tuo-account" class="salvati-link">
-            <img src="immagini/salvati.png" alt="Icona Salvati" style="width: 40px;">
+            <img src="img/salvati.png" alt="Icona Salvati" style="width: 40px;">
         </a>
     </header>
     <form action="home.php" method="post" class="filtro">
-        <div>
-        <input type="text" id="città" name="città" placeholder="Cerca per città">
-        <div>
-        <div>
-            <p>numero minimo di like:</p>
+        <div style="float: left; margin-right: 10px;">
+            <input type="text" id="città" name="città" value="" placeholder="Cerca per città">
+        </div>
+        <div style="float: left; margin-right: 10px;">
+            <p style="margin:0">numero minimo di like:</p>
+        </div>
+        <div style="float: left; margin-right: 15px;">
             <input type="range" id="like" name="like" min="0" max="500" value="0" oninput="updateDisplay(this)">
             <label id="rangeValue"></label>
         </div>
@@ -67,12 +70,13 @@
         $filtro_like='0';
     }
     // Execute the SQL query to retrieve all projects and related information
-    $sql = "SELECT bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
+    $sql = "SELECT bottega.ID_bottega, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
             FROM bottega
             INNER JOIN account ON account.email=bottega.email
             LEFT JOIN immagine ON bottega.ID_bottega=immagine.ID_bottega
             WHERE bottega.città LIKE '$filtro_città' AND bottega.num_like>$filtro_like
-            GROUP BY bottega.ID_bottega;";
+            GROUP BY bottega.ID_bottega
+            ORDER BY bottega.ID_bottega DESC;";
 
 
     $result = mysqli_query($conn, $sql);
@@ -81,8 +85,8 @@
     // Display each project and related information
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='container'>";
-                echo "<div class='wrapper'>";
+            echo "<div class='container' >";
+                echo "<button class='wrapper' id='myButton_".$row["ID_bottega"]."' data-codice='".$row["ID_bottega"]."'>";
                     echo "<div class='informazioni'>";
                         echo "<h2>". $row["nome"] ."</h2>";
                         echo "<p> di ". $row["username"] ."</p>";
@@ -97,7 +101,7 @@
                             echo "<img src='immagini/nonpresente.jpg'>";
                         }
                     echo "</div>";
-                echo "</div>";
+                echo "</button>";
             echo "</div>";
         }
     } else {
@@ -107,5 +111,17 @@
         echo "errore";
     }
     ?>
+    <script>
+        // Script per il pulsante "Mostra altro"
+        const buttons = document.querySelectorAll('button[id^="myButton_"]');
+
+        buttons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const codice = this.dataset.codice; // Get the project code
+                const url = "https://localhost/progettoGPO/bottega.php?codice=" + codice; // Create the URL with the project code
+                window.location.href  = url; // Redirect to the URL
+            });
+        });
+    </script>
 </body>
 </html>
