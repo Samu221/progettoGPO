@@ -18,7 +18,7 @@
         <a href="account.php" class="account-link">
             <img src="img/account.png" alt="Icona Account" style="width: 40px;">
         </a>
-        <a href="/percorso-del-tuo-account" class="salvati-link">
+        <a href="salvati.php" class="salvati-link">
             <img src="img/salvati.png" alt="Icona Salvati" style="width: 40px;">
         </a>
     </header>
@@ -35,7 +35,7 @@
         $user=$_SESSION['username'];
     }
     else{
-		header("location: index.php");
+		header("location: accesso/index.php");
     }
     $sql="  SELECT username, email, immagine, artigiano
             FROM account
@@ -61,7 +61,7 @@
             }
         echo "</div>";
     } else {
-		header("location: index.php");
+		header("location: accesso/index.php");
     }
 
     ?>

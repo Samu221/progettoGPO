@@ -1,0 +1,98 @@
+body {
+    font-family: 'Verdana', sans-serif; /* Font moderno e leggibile */
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.testo{
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1.5px solid #ddd;
+    border-radius: 5px;
+}
+
+.input{
+    width: 110px;
+    padding: 10px;
+    background-color: #a9a8a8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    float: right;
+}
+
+.container {
+    
+}
+
+.informazioni {
+    flex-basis: 49%; /* adjust the width as needed */
+    margin-right: 1rem;
+}
+
+.immagine {
+    flex-basis: 40%; /* adjust the width as needed */
+    text-align: center;
+}
+
+.immagine img {
+    max-width: 100%;
+    max-height: 300px;
+}
+/* header */
+.account-link {
+    position: absolute;
+    top: 32px; /* Posizione iniziale dall'alto */
+    right: 35px; /* Posizione a destra */
+    width: auto; /* Larghezza desiderata */
+    height: 36px; /* Altezza automatica */
+}
+
+.salvati-link {
+    position: absolute;
+    top: 32px; /* Posizione iniziale dall'alto */
+    right: 85px; /* Posizione a destra */
+    width: auto; /* Larghezza desiderata */
+    height: 36px; /* Altezza automatica */
+}
+
+header{
+    height: 100px;
+    width: 100%-1rem;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-top: transparent;
+    border-radius: 15px;
+    box-shadow: 2px 2px 1px #dedede;
+    padding-left:1rem;
+    margin-bottom: 1rem;
+}
+
+.h1{
+    font-size: 18px;
+    padding-top: 10px;
+}
+.logo-link{
+    float: left;
+    margin-top: 25px;
+    width: auto; 
+    height: auto;
+    margin-right: 3px;
+}
+.logo{
+    width: 50px;
+    height: auto;
+    border-radius: 25px;
+    border: 1px solid black;
+}
+
+/* Basic responsive adjustments */
+@media (max-width: 768px) {
+    body{
+		align-content:center;
+	}
+}

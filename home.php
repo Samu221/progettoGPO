@@ -18,7 +18,7 @@
         <a href="account.php" class="account-link">
             <img src="img/account.png" alt="Icona Account" style="width: 40px;">
         </a>
-        <a href="/percorso-del-tuo-account" class="salvati-link">
+        <a href="salvati.php" class="salvati-link">
             <img src="img/salvati.png" alt="Icona Salvati" style="width: 40px;">
         </a>
     </header>
@@ -29,11 +29,11 @@
         <div style="float: left; margin-right: 10px;">
             <p style="margin:0">numero minimo di like:</p>
         </div>
-        <div style="float: left; margin-right: 15px;">
-            <input type="range" id="like" name="like" min="0" max="500" value="0" oninput="updateDisplay(this)">
+        <div style="float: left; width: 550px;">
+            <input type="range" id="like" name="like" min="0" max="499" value="0" oninput="updateDisplay(this)" style="width:500px">
             <label id="rangeValue"></label>
         </div>
-        <input type="submit" value="Ricerca">
+        <input type="submit" value="Applica filtro">
     </form>
 
 <script>
@@ -48,12 +48,8 @@
 </script>
     <!-- Connect to the database -->
     <?php
-    $host = "localhost";
-    $user = "root";
-    $password = "";
-    $database = "progettogpo";
 
-    $conn = mysqli_connect($host, $user, $password, $database);
+    $conn = mysqli_connect("localhost", "root", "", "progettogpo");
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -70,7 +66,7 @@
         $filtro_like='0';
     }
     // Execute the SQL query to retrieve all projects and related information
-    $sql = "SELECT bottega.ID_bottega, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
+    $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
             FROM bottega
             INNER JOIN account ON account.email=bottega.email
             LEFT JOIN immagine ON bottega.ID_bottega=immagine.ID_bottega
@@ -89,6 +85,7 @@
                 echo "<button class='wrapper' id='myButton_".$row["ID_bottega"]."' data-codice='".$row["ID_bottega"]."'>";
                     echo "<div class='informazioni'>";
                         echo "<h2>". $row["nome"] ."</h2>";
+                        echo "<p style='float: right'>&#10084; ". $row["num_like"]."</p>";
                         echo "<p> di ". $row["username"] ."</p>";
                         echo "<p>". $row["indirizzo"] . " " .$row["città"] ."</p>";
                         echo "<p>". $row["descrizione"] ."</p>";

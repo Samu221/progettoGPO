@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 16, 2024 alle 18:23
+-- Creato il: Mag 17, 2024 alle 17:13
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -71,6 +71,27 @@ INSERT INTO `bottega` (`ID_bottega`, `email`, `orario`, `nome`, `indirizzo`, `ci
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `commento`
+--
+
+CREATE TABLE `commento` (
+  `ID_bottega` int(11) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `testo` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `commento`
+--
+
+INSERT INTO `commento` (`ID_bottega`, `email`, `ID`, `testo`) VALUES
+(2, 'samuele@mail.com', 5, 'prova'),
+(2, 'samuele@mail.com', 6, 'test2');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `immagine`
 --
 
@@ -86,25 +107,26 @@ CREATE TABLE `immagine` (
 
 INSERT INTO `immagine` (`ID_image`, `image`, `ID_bottega`) VALUES
 (1, 'img2.jpg', 1),
-(2, 'img2.jpg', 2);
+(2, 'img2.jpg', 2),
+(3, 'img2.jpg', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `salvati`
+-- Struttura della tabella `salvato`
 --
 
-CREATE TABLE `salvati` (
+CREATE TABLE `salvato` (
   `email` varchar(50) NOT NULL,
   `ID_bottega` int(30) NOT NULL,
   `ID_save` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `salvati`
+-- Dump dei dati per la tabella `salvato`
 --
 
-INSERT INTO `salvati` (`email`, `ID_bottega`, `ID_save`) VALUES
+INSERT INTO `salvato` (`email`, `ID_bottega`, `ID_save`) VALUES
 ('ergwagar@email.coc', 1, 1);
 
 -- --------------------------------------------------------
@@ -144,6 +166,14 @@ ALTER TABLE `bottega`
   ADD KEY `email` (`email`);
 
 --
+-- Indici per le tabelle `commento`
+--
+ALTER TABLE `commento`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_bottega` (`ID_bottega`),
+  ADD KEY `email` (`email`);
+
+--
 -- Indici per le tabelle `immagine`
 --
 ALTER TABLE `immagine`
@@ -151,9 +181,9 @@ ALTER TABLE `immagine`
   ADD KEY `ID_bottega` (`ID_bottega`);
 
 --
--- Indici per le tabelle `salvati`
+-- Indici per le tabelle `salvato`
 --
-ALTER TABLE `salvati`
+ALTER TABLE `salvato`
   ADD PRIMARY KEY (`ID_save`),
   ADD KEY `ID_bottega` (`ID_bottega`),
   ADD KEY `email` (`email`);
@@ -176,16 +206,22 @@ ALTER TABLE `bottega`
   MODIFY `ID_bottega` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT per la tabella `commento`
+--
+ALTER TABLE `commento`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT per la tabella `immagine`
 --
 ALTER TABLE `immagine`
-  MODIFY `ID_image` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_image` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT per la tabella `salvati`
+-- AUTO_INCREMENT per la tabella `salvato`
 --
-ALTER TABLE `salvati`
-  MODIFY `ID_save` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `salvato`
+  MODIFY `ID_save` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT per la tabella `tag`
@@ -204,17 +240,24 @@ ALTER TABLE `bottega`
   ADD CONSTRAINT `bottega_ibfk_1` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
 
 --
+-- Limiti per la tabella `commento`
+--
+ALTER TABLE `commento`
+  ADD CONSTRAINT `commento_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`),
+  ADD CONSTRAINT `commento_ibfk_2` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
+
+--
 -- Limiti per la tabella `immagine`
 --
 ALTER TABLE `immagine`
   ADD CONSTRAINT `immagine_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`);
 
 --
--- Limiti per la tabella `salvati`
+-- Limiti per la tabella `salvato`
 --
-ALTER TABLE `salvati`
-  ADD CONSTRAINT `salvati_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`),
-  ADD CONSTRAINT `salvati_ibfk_2` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
+ALTER TABLE `salvato`
+  ADD CONSTRAINT `salvato_ibfk_1` FOREIGN KEY (`ID_bottega`) REFERENCES `bottega` (`ID_bottega`),
+  ADD CONSTRAINT `salvato_ibfk_2` FOREIGN KEY (`email`) REFERENCES `account` (`email`);
 
 --
 -- Limiti per la tabella `tag`
