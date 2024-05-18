@@ -33,6 +33,14 @@
             <input type="range" id="like" name="like" min="0" max="499" value="0" oninput="updateDisplay(this)" style="width:500px">
             <label id="rangeValue"></label>
         </div>
+        <div style="float: left; margin-right: 10px;">
+            <select name="ordine" id="ordine"  value="">
+                <option value="" style="color:#b0b0b0">ordina per</option>
+                <option value="recente">Aggiunto di recente</option>
+                <option value="vecchio">Aggiunto da più tempo</option>
+                <option value="like">Più apprezzati</option>
+            </select>
+        </div>
         <input type="submit" value="Applica filtro">
     </form>
 
@@ -46,6 +54,7 @@
         updateDisplay(document.getElementById("like"));
     }
 </script>
+    
     <!-- Connect to the database -->
     <?php
 
@@ -65,6 +74,23 @@
     }else{
         $filtro_like='0';
     }
+    $order="";
+    if(isset($_POST["ordine"])){
+        switch($_POST["ordine"]){
+            case 'recente':
+                $order="ORDER BY bottega.ID_bottega DESC";
+                break;
+            case 'vecchio':
+                $order="ORDER BY bottega.ID_bottega";
+                break;
+            case 'like':
+                $order="ORDER BY bottega.num_like DESC";
+                break;
+            default:
+                $order="";
+                
+        }
+    }
     // Execute the SQL query to retrieve all projects and related information
     $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
             FROM bottega
@@ -72,38 +98,37 @@
             LEFT JOIN immagine ON bottega.ID_bottega=immagine.ID_bottega
             WHERE bottega.città LIKE '$filtro_città' AND bottega.num_like>$filtro_like
             GROUP BY bottega.ID_bottega
-            ORDER BY bottega.ID_bottega DESC;";
-
+            $order;";
 
     $result = mysqli_query($conn, $sql);
     if ($result){
 
-    // Display each project and related information
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='container' >";
-                echo "<button class='wrapper' id='myButton_".$row["ID_bottega"]."' data-codice='".$row["ID_bottega"]."'>";
-                    echo "<div class='informazioni'>";
-                        echo "<h2>". $row["nome"] ."</h2>";
-                        echo "<p style='float: right'>&#10084; ". $row["num_like"]."</p>";
-                        echo "<p> di ". $row["username"] ."</p>";
-                        echo "<p>". $row["indirizzo"] . " " .$row["città"] ."</p>";
-                        echo "<p>". $row["descrizione"] ."</p>";
-                    echo "</div>";
-                    echo "<div class='immagine'>";
-                        if(isset( $row["image"])){
-                            echo "<img src='immagini/". $row["image"] ."'>";
-                        }else
-                        {
-                            echo "<img src='immagini/nonpresente.jpg'>";
-                        }
-                    echo "</div>";
-                echo "</button>";
-            echo "</div>";
+        // Display each project and related information
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<div class='container' >";
+                    echo "<button class='wrapper' id='myButton_".$row["ID_bottega"]."' data-codice='".$row["ID_bottega"]."'>";
+                        echo "<div class='informazioni'>";
+                            echo "<h2>". $row["nome"] ."</h2>";
+                            echo "<p style='float: right'>&#10084; ". $row["num_like"]."</p>";
+                            echo "<p> di ". $row["username"] ."</p>";
+                            echo "<p>". $row["indirizzo"] . " " .$row["città"] ."</p>";
+                            echo "<p>". $row["descrizione"] ."</p>";
+                        echo "</div>";
+                        echo "<div class='immagine'>";
+                            if(isset( $row["image"])){
+                                echo "<img src='immagini/". $row["image"] ."'>";
+                            }else
+                            {
+                                echo "<img src='immagini/nonpresente.jpg'>";
+                            }
+                        echo "</div>";
+                    echo "</button>";
+                echo "</div>";
+            }
+        } else {
+            echo "Nessun progetto trovato.";
         }
-    } else {
-        echo "Nessun progetto trovato.";
-    }
     }else{
         echo "errore";
     }
