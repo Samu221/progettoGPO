@@ -1,0 +1,145 @@
+body {
+    font-family: 'Verdana', sans-serif; /* Font moderno e leggibile */
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #f4f4f4; /* Aggiunto uno sfondo leggero per migliorare il contrasto */
+}
+
+.testo {
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1.5px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff; /* Aggiunto uno sfondo bianco per il commento */
+    font-size: 14px; /* Ridotta la dimensione del font */
+}
+
+.input {
+    width: 90px; /* Ridotta la larghezza del pulsante */
+    padding: 8px; /* Ridotta la dimensione del padding */
+    background-color: #a9a8a8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    float: right;
+    font-size: 12px; /* Ridotta la dimensione del font */
+}
+
+.input:hover {
+    background-color: #888; /* Aggiunto effetto hover per il pulsante */
+}
+
+.container {
+    background-color: #fff; /* Aggiunto sfondo bianco per i contenitori */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem; /* Ridotta la dimensione del padding */
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Aggiunto un leggero box-shadow */
+    font-size: 14px; /* Ridotta la dimensione del font */
+}
+
+.informazioni {
+    flex-basis: 49%; /* Regolata la larghezza */
+    margin-right: 1rem;
+}
+
+.mySlides {
+    max-width: 60%; /* Ridotta ulteriormente la dimensione massima dell'immagine */
+    max-height: 150px; /* Ridotta ulteriormente la dimensione massima dell'immagine */
+    border-radius: 8px; /* Angoli arrotondati */
+    flex-basis: 40%; /* Regolata la larghezza */
+}
+
+/* header */
+.account-link {
+    position: absolute;
+    top: 32px;
+    right: 35px;
+    width: auto;
+    height: 36px;
+}
+
+.salvati-link {
+    position: absolute;
+    top: 32px;
+    right: 85px;
+    width: auto;
+    height: 36px;
+}
+
+header {
+    height: 100px; /* Ripristinata l'altezza dell'header */
+    width: calc(100% - 2rem); /* Corretto il calcolo della larghezza */
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-top: transparent;
+    border-radius: 15px;
+    box-shadow: 2px 2px 1px #dedede;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.h1{
+    font-size: 18px;
+    padding-top: 10px;
+}
+
+.logo-link{
+    float: left;
+    margin-top: 25px;
+    width: auto; 
+    height: auto;
+    margin-right: 3px;
+}
+.logo{
+    width: 50px;
+    height: auto;
+    border-radius: 25px;
+    border: 1px solid black;
+}
+
+/* Basic responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem;
+        font-size: 12px; /* Ridotta la dimensione del font per dispositivi mobili */
+    }
+
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    .testo {
+        width: 100%;
+    }
+
+    header {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .logo-link {
+        margin-top: 0;
+    }
+
+    .h1 {
+        padding-top: 0;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .account-link, .salvati-link {
+        position: static;
+        margin-top: 0.5rem;
+    }
+}

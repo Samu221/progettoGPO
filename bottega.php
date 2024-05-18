@@ -26,7 +26,7 @@
     <title><?php  echo "$nome"?></title>
 </head>
 <body>    
-    <header>
+    <header style="padding-right: 1rem;">
         <div class="header-content">
             <a href="home.php" class="logo-link">
                 <img src="img/logo.jpeg" alt="Logo" class="logo">
@@ -78,7 +78,7 @@
         
         if (mysqli_num_rows($result_img) > 0) {
             while($row = mysqli_fetch_assoc($result_img)) {
-                echo "<img class='mySlides' src='immagini/".$row["image"] ."' alt='Immagine della bottega'>";
+                echo "<center><img class='mySlides' src='immagini/".$row["image"] ."' alt='Immagine della bottega'></center>";
         
             }
         }
