@@ -54,28 +54,9 @@
         $result = mysqli_query($conn, $sql);
         $result_img = mysqli_query($conn, $sql_img);
         
+        echo "<h2 class='titolo'> " . $nome. "</h2>";
         
-        if($row = mysqli_fetch_assoc($result)) {
-            echo "<h2 class='titolo' " . $nome. "</h2>";
-            echo "  <div class='container info'>";
-            echo "      <div class='container ambito'>";
-            echo "          <p>Artigiano: " . $row["username"] . "</p>";
-            echo "          <p>Contatto: " . $row["email"] . "</p>";
-            echo "      </div>";
-            echo "      <div class='container likes'>";
-            echo "          <button class='like-button' id='myButton_".$idBottega."' data-codice='".$idBottega."'>&#10084;</button>";
-            echo "          <span class='like-count'>" . $row["num_like"] . "</span>";
-            echo "      </div>";
-            echo "      <div class='container descrizione'>";
-            echo "          <p>Descrizione: " . $row["descrizione"] . "</p>";
-            echo "      </div>";
-            echo "  </div>";
-            echo "  <div class='container image'>";
-        }
-        else{
-            echo "errore, bottega non trovata";
-        }
-        
+        echo "  <div class='container image'>";
         if (mysqli_num_rows($result_img) > 0) {
             while($row = mysqli_fetch_assoc($result_img)) {
                 echo "<center><img class='mySlides' src='immagini/".$row["image"] ."' alt='Immagine della bottega'></center>";
@@ -86,16 +67,68 @@
             echo "immagini non trovate";
         }
         echo "</div>";
+        if($row = mysqli_fetch_assoc($result)) {
+           // echo "  <div class='container info'>";
+            echo "      <div class='container ambito'>";
+            echo "          <div class='likes'>";
+            echo "             <button class='like-button' id='myButton_".$idBottega."' data-codice='".$idBottega."'>&#10084;</button>";
+            echo "              <span class='like-count'>" . $row["num_like"] . "</span>";
+            echo "          </div>";
+            echo "          <p>Artigiano: " . $row["username"] . "</p>";
+            echo "          <p>Contatto: " . $row["email"] . "</p>";
+            echo "      </div>";
+            echo "      <div class='container descrizione'>";
+            echo "          <p>Descrizione:</p>"; 
+            echo "          <p>" . $row["descrizione"] . "</p>";
+            echo "      </div>";
+           // echo "  </div>";
+        }
+        else{
+            echo "errore, bottega non trovata";
+        }
         
-        // Close the database connection
-        mysqli_close($conn);
+        
     ?>
+    <h2>Commenti:</h2>
     <form method="post" action="commento.php?codice=<?php echo $idBottega;?>" class="commenti">
         <input type="submit" value="Invia" class="input">
         <div class="testo">
             <input type="text" maxlength="500" id="commento" name="commento" required placeholder="Scrivi un commento" style="width:100%">
         </div>
     </form> 
+    <div class="box">
+        <div class="box-inner">
+            
+            <?php
+                $query = "  SELECT a.username, c.testo, a.immagine
+                            FROM account as a, commento as c
+                            WHERE a.email=c.email AND c.ID_bottega=$idBottega
+                            ORDER BY c.ID DESC";
+
+                $result = mysqli_query($conn, $query);
+                if ($result){
+            
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<div class='commento'>";
+                                echo "<div class='div-immagine'>";
+                                    if(!empty($row["immagine"]) && !is_null($row["immagine"]) ){
+                                        echo "<img class='immagine-commento' src='data:image/jpeg;base64," . base64_encode($row["immagine"]). ">";
+                                    }else{
+                                        echo "<img class='immagine-commento' src='immagini/nonpresente.jpg'<br>";
+                                    }
+                                echo "</div>";
+                                echo "<p class='user-commento'> ". $row["username"] ."</p>";
+                                echo "<p class='testo-commento'> ".$row["testo"] ." </p>";
+                            echo "</div>";
+                        }
+                    }
+                }
+                // Close the database connection
+                mysqli_close($conn);
+            ?>
+        </div>
+    </div>
 </body>
 <script>
     // Script per i like
