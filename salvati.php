@@ -22,20 +22,7 @@
             <img src="img/salvati.png" alt="Icona Salvati" style="width: 40px;">
         </a>
     </header>
-    <form action="home.php" method="post" class="filtro">
-        <div style="float: left; margin-right: 10px;">
-            <input type="text" id="città" name="città" value="" placeholder="Cerca per città">
-        </div>
-        <div style="float: left; margin-right: 10px;">
-            <p style="margin:0">numero minimo di like:</p>
-        </div>
-        <div style="float: left; width: 550px;">
-            <input type="range" id="like" name="like" min="0" max="499" value="0" oninput="updateDisplay(this)" style="width:500px">
-            <label id="rangeValue"></label>
-        </div>
-        <input type="submit" value="Applica filtro">
-    </form>
-
+   
 <script>
   function updateDisplay(input) {
     document.getElementById("rangeValue").textContent = input.value;
