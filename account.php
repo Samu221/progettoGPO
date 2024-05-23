@@ -37,37 +37,47 @@
     else{
 		header("location: accesso/index.php");
     }
-    $sql="  SELECT username, email, immagine, artigiano
+    $sql="  SELECT email, immagine, artigiano
             FROM account
             WHERE username='$user'"; 
 
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) {
+        echo "<div class='immagine'>";
+            if(!empty($row["immagine"]) && !is_null($row["immagine"]) ){
+                echo "<img class='immagine' src='data:image/jpeg;base64," . base64_encode($row["immagine"]) . "' alt='Immagine profilo'>";
+            }else{
+                echo "<img class='immagine' src='immagini/nonpresente.jpg'>";
+            }
+        echo "</div>";
         echo "<div class='informazioni'>";
-            echo "<p class='username'>Username: " . $row["username"] . "</p>";
+            echo "<p class='username'>Username: " . $user . "</p>";
             echo "<p class='email'>Email: " . $row["email"] . "</p>";
             if($row["artigiano"]){
                 echo "<p class='artigiano'>Ruolo: Artigiano<br>";
             }
             else{
-                echo "<p class='artigiano'>Ruolo: Utente<br>";
-            }
-        echo "</div>";
-        echo "<div class='immagine'>";
-            if(!empty($row["immagine"]) && !is_null($row["immagine"]) ){
-                echo "<img class='immagine' src='data:image/jpeg;base64," . base64_encode($row["immagine"]). ">";
-            }else{
-                echo "<img class='immagine' src='immagini/nonpresente.jpg'<br>";
+                echo "<p class='artigiano'>Ruolo: Utente<br></p>";
+                echo "<p>Sei un artigiano? </p>";
+                echo "<div class='tasto'>";
+                    echo "<a href='inserisci_bottega.html'>Inserisci la tua bottega</a>";
+                echo "</div>";
             }
         echo "</div>";
     } else {
 		header("location: accesso/index.php");
     }
 
-    ?>
+    ?> 
     <br>
-    <div class="modifica"><a href="modifica_profilo.html">modifica profilo</a></div>
-    <br>
-    
+    <div class="modifica">
+    <a href="accesso/index.php">Esci</a><br>
+    <a href="modifica_profilo.html">Modifica il profilo</a></div>
+    <div class="contenitore_form">
+        <form class="nuova_immagine" action="inserimento_immagine.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="immagine" accept="image/*" required>
+            <div><input type="submit" value="Cambia immagine profilo"></div>
+        </form>
+    </div>
 </body>
 </html>
