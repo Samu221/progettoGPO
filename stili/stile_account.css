@@ -5,7 +5,36 @@ body {
     padding-right: 1rem;
 }
 
+.tasto{
+    border-radius: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+    height: 20px;
+    width: 200px;
+    text-align: center;
+    font-size: 15px;
+}
+ 
+.tasto a{
+    text-decoration: none; 
+	color: black;
+}
 
+.modifica a{
+	color: black;
+}
+
+.nuova_immagine{
+    float: right;
+    text-align: center;
+    width: 300px;
+    margin-right: 50px;
+    background-color: white; /* Fondo dei tasti bianco */
+}
+.nuova_immagine input[type="submit"] {
+    background-color: white; /* Fondo del pulsante di invio bianco */
+    border-radius: 5px;
+}
 .container {
     border-radius: 30px;
     border: 1px solid black;
@@ -14,18 +43,27 @@ body {
 }
 
 .informazioni {
-    flex-basis: 49%; /* adjust the width as needed */
     margin-right: 1rem;
+}
+.contenitore_form{
+    width: 100%;
+    height: 30px;
+    float: right;
 }
 
 .immagine {
-    flex-basis: 40%; /* adjust the width as needed */
+    height: 300px;
+    width: 300px;
+    float: right;
     text-align: center;
+    margin-right: 50px;
 }
 
 .immagine img {
+    border-radius: 50%;
     max-width: 100%;
     max-height: 300px;
+    margin: auto;
 }
 
 /* header */
