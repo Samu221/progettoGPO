@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div class="page-container">
     <header>
         <div class="header-content">
             <a href="home.php" class="logo-link">
@@ -92,7 +93,7 @@
         }
     }
     // Execute the SQL query to retrieve all projects and related information
-    $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
+    $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
             FROM bottega
             INNER JOIN account ON account.email=bottega.email
             LEFT JOIN immagine ON bottega.ID_bottega=immagine.ID_bottega
@@ -127,7 +128,7 @@
                 echo "</div>";
             }
         } else {
-            echo "Nessun progetto trovato.";
+            echo "<div><p>Nessuna bottega trovato</p></div>";
         }
     }else{
         echo "errore";
@@ -146,20 +147,22 @@
         });
     </script>
     <br>
+    
     <footer>
-        <div class="containerf">
-            <div class="logo-left">
-                <img src="./img/LogoITI.png" alt="Logo" width="150%" height="150%">
+            <div class="containerf">
+                <div class="logo-left">
+                    <img src="./img/LogoITI.png" alt="Logo" width="auto" height="150%">
+                </div>
+                <div class="contact-info">
+                    <p>Recapito telefonico: 0587 53566</p>
+                    <p>Email: pitf030003@istruzione.it</p>
+                </div>
+                <div class="logo-right">
+                    <img src="./img/logo.jpeg" alt="Logo" width="auto" height="150%">
+                </div>
             </div>
-            <div class="contact-info">
-                <p>Recapito telefonico: 0587 53566</p>
-                <p>Email: pitf030003@istruzione.it</p>
-            </div>
-            <div class="logo-right">
-                <img src="./img/logo.jpeg" alt="Logo" width="150%" height="150%">
-            </div>
-        </div>
-        <p>&copy; 2024 Workman Advisor</p>
-    </footer>
+            <p>&copy; 2024 Workman Advisor</p>
+        </footer>
+    </div>
 </body>
 </html>

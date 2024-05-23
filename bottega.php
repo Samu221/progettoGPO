@@ -41,7 +41,9 @@
     </header>
 
     <?php
-        $sql = "SELECT bottega.orario, bottega.num_like, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, account.email
+        $sql = "SELECT bottega.num_like, bottega.indirizzo, bottega.città, bottega.descrizione, account.username,
+         account.email, bottega.lunedì, bottega.martedì, bottega.mercoledì, bottega.giovedì, bottega.venerdì,
+          bottega.sabato, bottega.domenica
                 FROM bottega
                 INNER JOIN account ON account.email=bottega.email
                 WHERE bottega.ID_bottega=$idBottega";
@@ -74,6 +76,16 @@
             echo "          </div>";
             echo "          <p>Artigiano: " . $row["username"] . "</p>";
             echo "          <p>Contatto: " . $row["email"] . "</p>";
+            echo "      </div>";
+            echo "       <p>Orari:</p>";
+            echo "      <div class='container orario'>";
+            echo "          <p>Lunedì    " . $row["lunedì"] . "</p>";
+            echo "          <p>Martedì   " . $row["martedì"] . "</p>";
+            echo "          <p>Mercoledì " . $row["mercoledì"] . "</p>";
+            echo "          <p>Giovedì   " . $row["giovedì"] . "</p>";
+            echo "          <p>Venerdì   " . $row["venerdì"] . "</p>";
+            echo "          <p>Sabato    " . $row["sabato"] . "</p>";
+            echo "          <p>Domenica  " . $row["domenica"] . "</p>";
             echo "      </div>";
             echo "      <div class='container descrizione'>";
             echo "          <p>Descrizione:</p>"; 
@@ -111,7 +123,7 @@
                             echo "<div class='commento'>";
                                 echo "<div class='div-immagine'>";
                                     if(!empty($row["immagine"]) && !is_null($row["immagine"]) ){
-                                        echo "<img class='immagine-commento' src='data:image/jpeg;base64," . base64_encode($row["immagine"]). ">";
+                                        echo "<img class='immagine-commento' src='data:image/jpeg;base64," . base64_encode($row["immagine"]) . "' alt='Immagine profilo'>";
                                     }else{
                                         echo "<img class='immagine-commento' src='immagini/nonpresente.jpg'<br>";
                                     }
@@ -156,19 +168,20 @@ function carousel() {
 }
 </script>
 <br>
-    <footer>
-        <div class="containerf">
-            <div class="logo-left">
-                <img src="./img/LogoITI.png" alt="Logo" width="150%" height="150%">
+    
+<footer>
+            <div class="containerf">
+                <div class="logo-left">
+                    <img src="./img/LogoITI.png" alt="Logo" width="auto" height="150%">
+                </div>
+                <div class="contact-info">
+                    <p>Recapito telefonico: 0587 53566</p>
+                    <p>Email: pitf030003@istruzione.it</p>
+                </div>
+                <div class="logo-right">
+                    <img src="./img/logo.jpeg" alt="Logo" width="auto" height="150%">
+                </div>
             </div>
-            <div class="contact-info">
-                <p>Recapito telefonico: 0587 53566</p>
-                <p>Email: pitf030003@istruzione.it</p>
-            </div>
-            <div class="logo-right">
-                <img src="./img/logo.jpeg" alt="Logo" width="150%" height="150%">
-            </div>
-        </div>
-        <p>&copy; 2024 Workman Advisor</p>
-    </footer>
+            <p>&copy; 2024 Workman Advisor</p>
+        </footer>
 </html>

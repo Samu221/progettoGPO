@@ -116,7 +116,6 @@ footer {
     text-align: center;
     position: relative;
     color: aliceblue;
-    flex-shrink: 0;
 }
 
 .containerf {

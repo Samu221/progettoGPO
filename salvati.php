@@ -78,7 +78,7 @@
                     $mail = ''; // or some default value
                 }
                 // Execute the SQL query to retrieve all projects and related information
-                $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.orario, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
+                $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
                         FROM bottega
                         INNER JOIN salvato ON salvato.ID_bottega = bottega.ID_bottega
                         INNER JOIN account ON account.email=bottega.email
@@ -115,7 +115,7 @@
                         echo "</div>";
                     }
                 } else {
-                    echo "Nessun progetto trovato.";
+                    echo "Nessuna bottega salvata.";
                 }
                 }else{
                     echo "errore";
@@ -137,17 +137,18 @@
             </div>
         </div>
         <br>
-        <footer>
+        
+    <footer>
             <div class="containerf">
                 <div class="logo-left">
-                    <img src="./img/LogoITI.png" alt="Logo" width="150%" height="150%">
+                    <img src="./img/LogoITI.png" alt="Logo" width="auto" height="150%">
                 </div>
                 <div class="contact-info">
                     <p>Recapito telefonico: 0587 53566</p>
                     <p>Email: pitf030003@istruzione.it</p>
                 </div>
                 <div class="logo-right">
-                    <img src="./img/logo.jpeg" alt="Logo" width="150%" height="150%">
+                    <img src="./img/logo.jpeg" alt="Logo" width="auto" height="150%">
                 </div>
             </div>
             <p>&copy; 2024 Workman Advisor</p>
