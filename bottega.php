@@ -15,8 +15,6 @@
         $nome=$row["nome"];
     }
     
-
-
 ?>
 <html>
 <head>
@@ -157,4 +155,20 @@ function carousel() {
   setTimeout(carousel, 3000);
 }
 </script>
+<br>
+    <footer>
+        <div class="containerf">
+            <div class="logo-left">
+                <img src="./img/LogoITI.png" alt="Logo" width="150%" height="150%">
+            </div>
+            <div class="contact-info">
+                <p>Recapito telefonico: 0587 53566</p>
+                <p>Email: pitf030003@istruzione.it</p>
+            </div>
+            <div class="logo-right">
+                <img src="./img/logo.jpeg" alt="Logo" width="150%" height="150%">
+            </div>
+        </div>
+        <p>&copy; 2024 Workman Advisor</p>
+    </footer>
 </html>
