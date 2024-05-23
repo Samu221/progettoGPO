@@ -3,6 +3,18 @@ body {
     margin: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
 }
 
 .container {
@@ -92,7 +104,6 @@ header{
     border: 1px solid black;
 }
 
-/* Basic responsive adjustments */
 @media (max-width: 768px) {
     body{
 		align-content:center;
@@ -105,6 +116,7 @@ footer {
     text-align: center;
     position: relative;
     color: aliceblue;
+    flex-shrink: 0;
 }
 
 .containerf {
