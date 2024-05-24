@@ -13,20 +13,11 @@
     if (isset($_GET['codice'])) {
         $idBottega=$_GET["codice"];
     }
-    if (isset($_SESSION['username'])) {
-        $user=$_SESSION['username'];
+    if (isset($_SESSION['mail_user'])) {
+        $mail=$_SESSION['mail_user'];
     }
     else{
 		header("location: accesso/index.php");
-    }
-
-    $sql="  SELECT email
-            FROM account
-            WHERE username='$user'"; 
-
-    $result = mysqli_query($conn, $sql);
-    if ($row = mysqli_fetch_assoc($result)) {
-        $mail=$row["email"];
     }
 
     $query="    SELECT *

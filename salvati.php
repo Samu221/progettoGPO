@@ -59,24 +59,14 @@
                     $filtro_like='0';
                 }
                 $user="errore";
-                if (isset($_SESSION['username'])) {
-                    $user=$_SESSION['username'];
+                if (isset($_SESSION['mail_user'])) {
+                    $mail=$_SESSION['mail_user'];
                 }
                 else{
                     //header("location: accesso/index.php");
-                    echo $user;
+                    echo $_SESSION["mail_user"];
                 }
 
-                $sql="  SELECT email
-                        FROM account
-                        WHERE username='$user'"; 
-
-                $result = mysqli_query($conn, $sql);
-                if ($row = mysqli_fetch_assoc($result)) {
-                    $mail = $row["email"];
-                } else {
-                    $mail = ''; // or some default value
-                }
                 // Execute the SQL query to retrieve all projects and related information
                 $sql = "SELECT bottega.ID_bottega, bottega.num_like, bottega.nome, bottega.indirizzo, bottega.città, bottega.descrizione, account.username, immagine.image
                         FROM bottega

@@ -43,7 +43,7 @@
         $query_insert = "INSERT INTO account (email, username, password) VALUES ('$mail', '$name', '$pw_hashed')";
 
         if (mysqli_query($conn, $query_insert)) {
-            $_SESSION["username"] = $username;
+            $_SESSION["mail_user"] = $mail;
             header("location: ../home.php");
             exit();
         } else {

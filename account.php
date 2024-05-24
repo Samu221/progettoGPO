@@ -31,15 +31,15 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-	if (isset($_SESSION['username'])) {
-        $user=$_SESSION['username'];
+	if (isset($_SESSION['mail_user'])) {
+        $mail=$_SESSION['mail_user'];
     }
     else{
 		header("location: accesso/index.php");
     }
-    $sql="  SELECT email, immagine, artigiano
+    $sql="  SELECT username, immagine, artigiano
             FROM account
-            WHERE username='$user'"; 
+            WHERE email='$mail'"; 
 
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) {
@@ -49,10 +49,17 @@
             }else{
                 echo "<img class='immagine' src='immagini/nonpresente.jpg'>";
             }
+            ?>
+            
+                <form class="nuova_immagine" action="inserimento_immagine.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="immagine" accept="image/*" required>
+                    <div><input type="submit" value="Cambia immagine profilo"></div>
+                </form>
+        <?php       
         echo "</div>";
         echo "<div class='informazioni'>";
-            echo "<p class='username'>Username: " . $user . "</p>";
-            echo "<p class='email'>Email: " . $row["email"] . "</p>";
+            echo "<p class='username'>Username: " . $row["username"] . "</p>";
+            echo "<p class='email'>Email: " . $mail . "</p>";
             if($row["artigiano"]){
                 echo "<p class='artigiano'>Ruolo: Artigiano<br>";
             }
@@ -71,14 +78,8 @@
     ?> 
     <br>
     <div class="modifica">
-    <a href="accesso/index.php">Esci</a><br>
+    <a href="accesso/index.php">Esci</a><br><br>
     <a href="modifica_profilo.html">Modifica il profilo</a></div>
-    <div class="contenitore_form">
-        <form class="nuova_immagine" action="inserimento_immagine.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="immagine" accept="image/*" required>
-            <div><input type="submit" value="Cambia immagine profilo"></div>
-        </form>
-    </div>
     <br>
     <footer>
             <div class="containerf">

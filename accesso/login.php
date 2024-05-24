@@ -35,7 +35,7 @@
 
             // Verify password
             if (SHA1($pw) == $hashed_password) {
-                $_SESSION["username"] = $username;
+                $_SESSION["mail_user"] = $email;
                 header("location: ../home.php");
                 exit(); // Ensure script stops here after redirect
             } else {
