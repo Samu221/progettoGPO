@@ -4,6 +4,9 @@ if (isset($_SESSION['login_error'])) {
   $login_error = $_SESSION['login_error'];
   unset($_SESSION['login_error']);
 }
+if(isset($_SESSION["username"])){
+  unset($_SESSION["username"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

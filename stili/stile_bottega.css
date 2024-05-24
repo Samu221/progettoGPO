@@ -5,6 +5,12 @@ body {
     padding-right: 1rem;
 }
 
+td{
+    padding-right: 10px;
+    font-size: 14px;
+    padding-bottom:5px;
+}
+
 .likes{
     float: right;
     margin-top: 10px;
@@ -29,6 +35,15 @@ body {
     overflow: auto;
     margin: 25px 24px 0;
     padding-right: 2px;
+}
+.user-commento{
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+.testo-commento{
+    font-size: 11px;
+    margin-top: 2px;
 }
 .commento{
     border: 1px solid rgb(243, 242, 247);

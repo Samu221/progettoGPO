@@ -44,7 +44,7 @@
 
         if (mysqli_query($conn, $query_insert)) {
             $_SESSION["username"] = $username;
-            header("location: home.php");
+            header("location: ../home.php");
             exit();
         } else {
             echo "Errore nella registrazione: " . mysqli_error($conn);
