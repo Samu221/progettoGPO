@@ -27,7 +27,7 @@ if (isset($_SESSION['login_error'])) {
     <?php endif; ?>
     <form action="login.php" method="post">
       <p>Email:</p>
-      <input type="email" id="mail" name="maillogin" placeholder="Enter username" required>
+      <input type="email" id="mail" name="maillogin" placeholder="Enter email" required>
       <p>Password:</p>
       <input type="password" id="pass" name="passlogin" placeholder="Enter password" required>
       <input type="submit" value="Accedi" style="background-color:black">
