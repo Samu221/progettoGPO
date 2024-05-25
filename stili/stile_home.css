@@ -2,7 +2,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin: 0;
     font-family: 'Verdana', sans-serif;
 }
@@ -76,7 +77,7 @@ body {
 
 header {
     height: 100px; /* Ripristinata l'altezza dell'header */
-    width: calc(100% - 2rem); /* Corretto il calcolo della larghezza */
+    width: auto; /* Corretto il calcolo della larghezza */
     background-color: #ffffff;
     border: 1px solid black;
     border-top: transparent;
@@ -147,26 +148,61 @@ footer {
 .footer p {
     margin: 10px 0 0;
 }
+.barra_like{
+    width:calc(380px);
+}
 
+@media (max-width: 1024px) {
+    /* Adjust header layout */
+    header {
+      height: 80px;
+    }
+    .logo-link {
+      margin-top: 15px;
+    }
+    .h1 {
+      font-size: 16px;
+    }
+    /* Adjust account and salvati links */
+    .account-link {
+      top: 20px;
+      right: 20px;
+    }
+    .salvati-link {
+      top: 20px;
+      right: 65px;
+    }
+
+}
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+    .container {
+      width: 100%;
+    }
+  
+    .wrapper {
+      flex-direction: column;
+    }
+  
+    .informazioni, .immagine {
+      width: 100%;
+    }
+  
+    .immagine img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  
 @media (max-width: 600px) {
     header {
-        justify-content: center;
     }
 
-    .header-content {
-        flex-direction: column;
-        align-items: center;
+    .barra_like{
+        width:50%
     }
 
-    .h1 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .account-link, .salvati-link {
-        position: static;
-        margin-top: 1rem;
-    }
 
     form.filtro {
         flex-direction: column;
@@ -182,3 +218,91 @@ footer {
         margin-right: 0;
     }
 }
+@media (max-width: 550px){
+    .h1 {
+      font-size: 14px;
+      float: left;
+    }
+  }
+  /* Mobile devices */
+  @media (max-width: 480px) {
+    /* Adjust header layout */
+    body{
+      text-align: center;
+      font-size: x-large;
+      padding: 0;
+    }
+    header {
+      height: 60px;
+      margin-bottom: 0;
+    }
+    .logo-link {
+      margin-top: 10px;
+    }
+    .h1 {
+      font-size: 10px;
+    }
+    /* Adjust account and salvati links */
+    .account-link {
+      top: 15px;
+      right: 15px;
+    }
+    .salvati-link {
+      top: 15px;
+      right: 57px;
+    }
+}
+/* For screens smaller than 480px */
+@media (max-width: 480px) {
+    /* Adjust header layout */
+    body{
+      text-align: center;
+      font-size: x-large;
+      padding: 0;
+    }
+    header {
+      height: 60px;
+      margin-bottom: 0;
+    }
+    .logo-link {
+      margin-top: 10px;
+    }
+    .h1 {
+      font-size: 10px;
+    }
+    /* Adjust account and salvati links */
+    .account-link {
+      top: 15px;
+      right: 15px;
+    }
+    .salvati-link {
+      top: 15px;
+      right: 57px;
+    }
+  
+    form.filtro {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    footer {
+        padding: 10px 0;
+        position: inherit;
+        font-size: medium;
+      }
+      .modifica{
+        float: none;
+      }
+      .containerf {
+        flex-direction: column;
+        align-items: center;
+      }
+      .logo-left, .logo-right {
+          display: none;
+      }
+      .contact-info {
+        text-align: center;
+      }
+      .contact-info p {
+        margin: 2px 0;
+      }
+  }

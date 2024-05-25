@@ -23,7 +23,6 @@
     $query="    SELECT *
                 FROM salvato
                 WHERE email='$mail' AND ID_bottega=$idBottega";
-                
     $result = mysqli_query($conn, $query);
     $num_rows = mysqli_num_rows($result);
 
